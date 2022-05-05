@@ -22,25 +22,49 @@ namespace PerceptronWithGradientDescent
         }
 
         //Randomize is in base class
+        
+        //Not needed because there is a shared 
+        //public double Compute(double[] inputs)
+        //{
+        //    /*computes the output with given input*/
 
-        public double Compute(double[] inputs)
-        {
-            /*computes the output with given input*/
-            return 0;        
-        }
+        //    double activationInput = base.Compute(inputs);
+        //    return activationFunction.Function(activationInput);
+        //}
 
-        public double[] Compute(double[][] inputs)
-        {
-            /*computes the output for each row of inputs*/
-            return null;
-        }
+        //Compute[] is in the base class
 
         //Get error is in base class
+
+        void PartialWeight()
+        {
+            //derivative of activation function is easy
+            activationFunction.Derivative(/*input*/);
+        }
+
+        void PartialBias()
+        {
+            //derivative of activation function is easy
+            activationFunction.Derivative(/*input*/);
+        }
 
         public double Train(double[] inputs, double desiredOutput)
         {
             /*trains the perceptron using gradient descent for one iteration and returns the error */
-            return 0;
+            //computed has the activation function in it.
+            double computed = base.Compute(inputs);
+            double output = activationFunction.Function(computed);
+            double error = errorFunction.Function(output, desiredOutput);
+
+            //double learningRate 
+
+
+
+            
+            //LearningRate * (-1) * (partial derivative)
+
+
+            return error;
         }
 
         public double Train(double[][] inputs, double[] desiredOutput)
