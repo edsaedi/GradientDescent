@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32228.343
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerceptronWithGradientDescent", "PerceptronWithGradientDescent\PerceptronWithGradientDescent.csproj", "{6611755B-A10E-4395-A6C5-4D6AFD2B11AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PerceptronWithGradientDescent", "PerceptronWithGradientDescent\PerceptronWithGradientDescent.csproj", "{6611755B-A10E-4395-A6C5-4D6AFD2B11AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AndGate", "AndGate\AndGate.csproj", "{AED61222-68CE-46FB-8C7B-77D10E7BC23F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{6611755B-A10E-4395-A6C5-4D6AFD2B11AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6611755B-A10E-4395-A6C5-4D6AFD2B11AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6611755B-A10E-4395-A6C5-4D6AFD2B11AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AED61222-68CE-46FB-8C7B-77D10E7BC23F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AED61222-68CE-46FB-8C7B-77D10E7BC23F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AED61222-68CE-46FB-8C7B-77D10E7BC23F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AED61222-68CE-46FB-8C7B-77D10E7BC23F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
