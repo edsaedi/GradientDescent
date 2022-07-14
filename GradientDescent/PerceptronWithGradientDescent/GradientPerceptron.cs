@@ -7,11 +7,8 @@ namespace PerceptronWithGradientDescent
     public class GradientPerceptron : Perceptron
     {
         public double LearningRate { get; set; }
-        public double[] weights;
-        public double bias;
 
         ErrorFunction errorFunction;
-        ActivationFunction activationFunction;
 
         public GradientPerceptron(int amountOfInputs, double learningRate, ActivationFunction activationFunction, ErrorFunction errorFunction)
              : base(amountOfInputs, errorFunction.Function)//Base initializes weights, bias, and errorFunc

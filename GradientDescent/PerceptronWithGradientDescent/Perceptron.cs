@@ -10,8 +10,8 @@ namespace PerceptronWithGradientDescent
         public double bias;
         double mutationAmount;
         Random random;
-        Func<double, double, double> errorFunc;
-        ActivationFunction activationFunction;
+        protected Func<double, double, double> errorFunc;
+        protected ActivationFunction activationFunction;
 
         public Perceptron(double[] initialWeightValues, double initialBiasValue, double mutationAmount, Random random, Func<double, double, double> errorFunc, Func<double, double> function, ActivationFunction activationFunction)
         {

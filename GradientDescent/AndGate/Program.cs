@@ -11,6 +11,14 @@ namespace AndGate
             return Math.Pow((desiredOutput - output), 2);
         }
 
+        public static double MeanSquaredErrorDerivative(double output, double desiredOutput)
+        {
+            //Beware, some say it should be -2 while others say positive 2.
+            //https://math.stackexchange.com/questions/3713832/derivative-of-mean-squared-error
+            //https://www.bragitoff.com/2021/12/mean-squared-error-loss-function-and-its-gradient-derivative-for-a-batch-of-inputs-python-code/
+            return 0;
+        }
+
         public static (double[][] inputs, double[] outputs) AndInOut()
         {
             double[][] inputs = new double[][] { new double[] { 0, 0 }, new double[] { 1, 0 }, new double[] { 0, 1 }, new double[] { 1, 1 } };
@@ -36,7 +44,7 @@ namespace AndGate
             Random random = new Random();
 
             //creating a perceptron
-            GradientPerceptron gate = new GradientPerceptron(amountOfInputs: 2, learningRate: , new ActivationFunction(BinaryStep, derivative: x => 0), MeanSquaredError);
+            GradientPerceptron gate = new GradientPerceptron(amountOfInputs: 2, learningRate: 1, new ActivationFunction(BinaryStep, derivative: x => 0), new ErrorFunction(MeanSquaredError, MeanSquaredErrorDerivative));
 
             //Setting random values for our weights and bias
             gate.Randomize(random, -1, 1);
