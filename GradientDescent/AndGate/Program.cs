@@ -44,7 +44,7 @@ namespace AndGate
             Random random = new Random();
 
             //creating a perceptron
-            GradientPerceptron gate = new GradientPerceptron(amountOfInputs: 2, learningRate: 1, new ActivationFunction(BinaryStep, derivative: x => 0), new ErrorFunction(MeanSquaredError, MeanSquaredErrorDerivative));
+            GradientPerceptron gate = new GradientPerceptron(amountOfInputs: 2, learningRate: 1, new ActivationFunction(BinaryStep, derivative: x => 0), new ErrorFunction(MeanSquaredError, MeanSquaredErrorDerivative), new Random());
 
             //Setting random values for our weights and bias
             gate.Randomize(random, -1, 1);
@@ -75,7 +75,7 @@ namespace AndGate
                     Console.WriteLine();
                 }
                 Console.WriteLine("Error: " + Math.Round(currentError, 3) + "           ");
-                currentError = gate.TrainWithHillClimbing(inputs, outputs, currentError);
+                currentError = gate.Train(inputs, outputs, currentError);
             }
 
             Console.WriteLine("Final Error: " + Math.Round(currentError, 3) + "");

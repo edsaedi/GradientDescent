@@ -36,10 +36,11 @@ namespace PerceptronWithGradientDescent
 
         }
 
-        public Perceptron(int amountOfInputs, Func<double, double, double> errorFunc)
+        public Perceptron(int amountOfInputs, Func<double, double, double> errorFunc, Random random)
         {
             this.errorFunc = errorFunc;
-            weights = new double[amountOfInputs];
+            this.random = random;
+            weights = new double[amountOfInputs];   
         }
 
         public void Randomize(Random random, double min, double max)
@@ -64,7 +65,9 @@ namespace PerceptronWithGradientDescent
                 result += (weights[i] * inputs[i]);
             }
 
-            return activationFunction.Function(result);
+            return result;
+
+            //return activationFunction.Function(result);
         }
 
         public double[] Compute(double[][] inputs)
@@ -126,7 +129,7 @@ namespace PerceptronWithGradientDescent
 
             // If the new error is better than the current error, update the current error, else undo the mutation.
 
-            if (newError < currentError)
+            if (newError <= currentError)
             {
                 return newError;
             }

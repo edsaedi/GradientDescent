@@ -10,8 +10,8 @@ namespace PerceptronWithGradientDescent
 
         ErrorFunction errorFunction;
 
-        public GradientPerceptron(int amountOfInputs, double learningRate, ActivationFunction activationFunction, ErrorFunction errorFunction)
-             : base(amountOfInputs, errorFunction.Function)//Base initializes weights, bias, and errorFunc
+        public GradientPerceptron(int amountOfInputs, double learningRate, ActivationFunction activationFunction, ErrorFunction errorFunction, Random random)
+             : base(amountOfInputs, errorFunction.Function, random)//Base initializes weights, bias, and errorFunc
         {
             LearningRate = learningRate;
             this.activationFunction = activationFunction;
@@ -37,7 +37,7 @@ namespace PerceptronWithGradientDescent
         {
             /*trains the perceptron using gradient descent for one iteration and returns the error */
             //computed has the activation function in it.
-            double computed = base.Compute(inputs);
+            double computed = Compute(inputs);
             double output = activationFunction.Function(computed);
             double error = errorFunction.Function(output, desiredOutput);
 
