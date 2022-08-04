@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PerceptronWithGradientDescent
 {
-    public class GradientPerceptron : Perceptron
+    public class GradientPerceptron : PerceptronBase
     {
         public double LearningRate { get; set; }
 

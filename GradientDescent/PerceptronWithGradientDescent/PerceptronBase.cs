@@ -8,9 +8,18 @@ namespace PerceptronWithGradientDescent
     {
         public double[] weights;
         public double bias;
-        Random random;
+        protected Random random;
         protected Func<double, double, double> errorFunc;
         protected ActivationFunction activationFunction;
+
+        public PerceptronBase(double[] weights, double bias, Random random, Func<double, double, double> errorFunc, ActivationFunction activationFunction)
+        {
+            this.weights = weights;
+            this.bias = bias;
+            this.random = random;
+            this.errorFunc = errorFunc;
+            this.activationFunction = activationFunction;
+        }
 
         public void Randomize(Random random, double min, double max)
         {
@@ -67,8 +76,8 @@ namespace PerceptronWithGradientDescent
             /*computes the output using the inputs returns the average error between each output row and each desired output row using errorFunc*/
         }
 
-        public abstract double Train(double[] input, double output);
-
+        public abstract double Train(double[][] input, double output);
+        //This is wierd that it is not the train function with double[], double
 
     }
 }
