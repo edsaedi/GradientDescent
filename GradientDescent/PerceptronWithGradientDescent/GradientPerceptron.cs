@@ -11,11 +11,10 @@ namespace PerceptronWithGradientDescent
         ErrorFunction errorFunction;
 
         public GradientPerceptron(int amountOfInputs, double learningRate, ActivationFunction activationFunction, ErrorFunction errorFunction, Random random)
-             : base(amountOfInputs, errorFunction.Function, random)//Base initializes weights, bias, and errorFunc
+            : base(new double[amountOfInputs], random, errorFunction.Function, activationFunction)
         {
-            LearningRate = learningRate;
-            this.activationFunction = activationFunction;
             this.errorFunction = errorFunction;
+            LearningRate = learningRate;
         }
 
         //Randomize is in base class
@@ -55,10 +54,10 @@ namespace PerceptronWithGradientDescent
             return error;
         }
 
-        public double Train(double[][] inputs, double[] desiredOutput)
+        public override double Train(double[][] inputs, double[] desiredOutput)
         {
             /*batch trains the perceptron using gradient descent for one iteration and returns the error */
-            double[] computed = base.Compute(inputs);
+            double[] computed = Compute(inputs);
 
             double[] output = new double[inputs.Length];
             for (int i = 0; i < output.Length; i++)
@@ -78,7 +77,7 @@ namespace PerceptronWithGradientDescent
                 }
                 bias += weightChangeScalar;
             }
-            
+
             return error;
         }
 

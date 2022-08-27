@@ -6,40 +6,29 @@ namespace PerceptronWithGradientDescent
 {
     public class Perceptron : PerceptronBase
     {
-        double currentError;
         double mutationAmount;
 
-        public Perceptron(double[] initialWeightValues, double initialBiasValue, double mutationAmount, Random random, Func<double, double, double> errorFunc, Func<double, double> function, ActivationFunction activationFunction)
+        public Perceptron(double[] initialWeightValues, double initialBiasValue, double mutationAmount, Random random, Func<double, double, double> errorFunc, ActivationFunction activationFunction)
+        : base(initialWeightValues, initialBiasValue, random, errorFunc, activationFunction)
         {
             /*initializes the perceptron*/
-            weights = initialWeightValues;
-            bias = initialBiasValue;
             this.mutationAmount = mutationAmount;
-            this.random = random;
-            this.errorFunc = errorFunc;
-            this.activationFunction = activationFunction;
         }
 
         public Perceptron(int amountOfInputs, double mutationAmount, Random random, Func<double, double, double> errorFunc, ActivationFunction activationFunction)
+        : base(new double[amountOfInputs], random, errorFunc, activationFunction)
         {
             /*Initializes the weights array given the amount of inputs*/
             this.mutationAmount = mutationAmount;
-            this.random = random;
-            this.errorFunc = errorFunc;
-            this.activationFunction = activationFunction;
-
-            weights = new double[amountOfInputs];
-
         }
 
         public Perceptron(int amountOfInputs, Func<double, double, double> errorFunc, Random random)
+         : base(new double[amountOfInputs], random, errorFunc)
         {
-            this.errorFunc = errorFunc;
-            this.random = random;
-            weights = new double[amountOfInputs];   
+
         }
 
-        public override double TrainWithHillClimbing(double[][] inputs, double[] desiredOutputs)
+        public override double Train(double[][] inputs, double[] desiredOutputs)
         {
             // Randomly Mutate one weight
             ///Random mutation begins:
@@ -65,6 +54,7 @@ namespace PerceptronWithGradientDescent
 
             if (newError <= currentError)
             {
+                newError = currentError;
                 return newError;
             }
 

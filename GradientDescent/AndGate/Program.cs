@@ -16,7 +16,7 @@ namespace AndGate
             //Beware, some say it should be -2 while others say positive 2.
             //https://math.stackexchange.com/questions/3713832/derivative-of-mean-squared-error
             //https://www.bragitoff.com/2021/12/mean-squared-error-loss-function-and-its-gradient-derivative-for-a-batch-of-inputs-python-code/
-            return 0;
+            return -2 * (desiredOutput - output);
         }
 
         public static (double[][] inputs, double[] outputs) AndInOut()
@@ -38,13 +38,18 @@ namespace AndGate
             }
         }
 
+        public static double Identity(double input)
+        {
+            return input;
+        }
+
 
         static void Main(string[] args)
         {
             Random random = new Random();
 
             //creating a perceptron
-            GradientPerceptron gate = new GradientPerceptron(amountOfInputs: 2, learningRate: 1, new ActivationFunction(BinaryStep, derivative: x => 0), new ErrorFunction(MeanSquaredError, MeanSquaredErrorDerivative), new Random());
+            GradientPerceptron gate = new GradientPerceptron(amountOfInputs: 2, learningRate: 0.001, new ActivationFunction(Identity, derivative: x => 1), new ErrorFunction(MeanSquaredError, MeanSquaredErrorDerivative), new Random()); ;
 
             //Setting random values for our weights and bias
             gate.Randomize(random, -1, 1);
@@ -75,11 +80,11 @@ namespace AndGate
                     Console.WriteLine();
                 }
                 Console.WriteLine("Error: " + Math.Round(currentError, 3) + "           ");
-                currentError = gate.Train(inputs, outputs, currentError);
+                currentError = gate.Train(inputs, outputs);
             }
 
             Console.WriteLine("Final Error: " + Math.Round(currentError, 3) + "");
-            currentError = gate.TrainWithHillClimbing(inputs, outputs, currentError);
+            currentError = gate.Train(inputs, outputs);
 
             //for (int i = 0; i < inputs.Length; i++)
             //{

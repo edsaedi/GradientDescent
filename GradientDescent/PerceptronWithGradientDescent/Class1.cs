@@ -17,11 +17,11 @@ namespace PerceptronWithGradientDescent
         }
     }
 
-    class Example : ExampleBase
-    {
-        public override void DoStuff()
-        {
-            throw new NotImplementedException();
-        }
-    }
+    //class Example : ExampleBase
+    //{
+    //    public override void DoStuff()
+    //    {
+    //        throw new NotImplementedException();
+    //    }
+    //}
 }
